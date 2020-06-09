@@ -1,13 +1,16 @@
 import React from 'react'
 
 import { ThemeProvider } from 'emotion-theming'
-import theme from '../assets/theme'
+import theme from '../assets/scripts/theme'
 import styled from '@emotion/styled'
+import { breakpoints } from '../assets/scripts/media-query'
+import '../assets/styles/normalize.scss'
+import '../assets/styles/typography.scss'
 
 import { Helmet } from 'react-helmet'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import './all.sass'
+// import './all.sass'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
 
