@@ -8,14 +8,18 @@ import '../assets/styles/normalize.scss'
 import '../assets/styles/typography.scss'
 
 import { Helmet } from 'react-helmet'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-// import './all.sass'
+import Footer from './Footer'
+import Navbar from './Navbar'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
 
 const Wrapper = styled.div`
   background-color: ${theme.colors.light};
+  color: ${theme.colors.info};
+
+  h1 {
+    color: ${theme.colors.primary};
+  }
 `
 
 const TemplateWrapper = ({ children }) => {
