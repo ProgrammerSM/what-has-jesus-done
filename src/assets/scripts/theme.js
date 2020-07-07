@@ -1,3 +1,6 @@
+const margin = 20
+const padding = 20
+
 export default {
   colors: {
     primary:    '#7851a9', // purple
@@ -10,5 +13,13 @@ export default {
     light:      '#f1f1f1', // white
     grey:       '#999999', // grey
     dark:       '#21202d', // dark dark blue
-  }
+  },
+  fonts: {
+    openSans: "'Open Sans', sans-serif",
+    montserrat: "'Montserrat', sans-serif",
+  },
+  margin: `${margin}px`,
+  marginNum: margin,
+  padding: `${padding}px`,
+  paddingNum: padding,
 }

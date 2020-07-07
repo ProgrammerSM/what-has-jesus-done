@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const Constraint = ({ children }) => {
   const Constraint = styled.div`
-    width: 100%;
+    width: auto;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;

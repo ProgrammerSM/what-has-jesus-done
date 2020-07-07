@@ -1,98 +1,126 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import github from '../img/github-icon.svg'
-import logo from '../img/logo.svg'
 
-const Navbar = class extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      active: false,
-      navBarActiveClass: '',
+import logo from '../img/whjd-cross-logo.png'
+import styled from '@emotion/styled'
+import { breakpoints } from '../assets/scripts/media-query'
+import { useTheme } from 'emotion-theming'
+
+import Constraint from './Constraint'
+
+const Navbar = () => {
+  const theme = useTheme()
+  const { largeUp, mediumUp } = breakpoints;
+  const smallHeight = 44;
+  const mediumHeight = 67;
+  const largeHeight = 88;
+
+  const Navbar = styled.header`
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: ${smallHeight}px;
+    padding: ${theme.padding} 0;
+    background-color: ${theme.colors.primary};
+
+    ${mediumUp} {
+      height: ${mediumHeight}px;
     }
-  }
 
-  toggleHamburger = () => {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: 'is-active',
-            })
-          : this.setState({
-              navBarActiveClass: '',
-            })
+    ${largeUp} {
+      height: ${largeHeight}px;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-wrapper {
+
+      .logo {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: ${theme.colors.light};
+        text-decoration: none;
       }
-    )
-  }
 
-  render() {
-    return (
-      <nav
-        className="navbar is-transparent"
+      .logo-text {
+        font-size: 12px;
+
+        ${mediumUp} {
+          font-size: 18px;
+        }
+
+        ${largeUp} {
+          font-size: 28px;
+        }
+      }
+      
+      img {
+        width: 25px;
+        max-width: 50px;
+        min-width: 25px;
+        height: auto;
+
+        ${mediumUp} {
+          width: 38px;
+        }
+
+        ${largeUp} {
+          width: 50px;
+        }
+      }
+    }
+
+    nav {
+      
+    }
+  `
+  const TopSpacer = styled.div`
+    width: 100%;
+    height: ${smallHeight + (theme.paddingNum * 2)}px;
+
+    ${mediumUp} {
+      height: ${mediumHeight + (theme.paddingNum * 2)}px;
+    }
+
+    ${largeUp} {
+      height: ${largeHeight + (theme.paddingNum * 2)}px;
+    }
+  `
+
+  return (
+    <>
+      <Navbar
         role="navigation"
         aria-label="main-navigation"
       >
-        <div className="container">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
-            </Link>
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              onClick={() => this.toggleHamburger()}
-            >
-              <span />
-              <span />
-              <span />
+        <Constraint>
+          <div className="wrapper">
+            <div className="logo-wrapper">
+              <Link to="/" title="Logo" className="logo">
+                <span className="logo-text">What Has</span>
+                <img src={logo} alt="What has Jesus done" />
+                <span className="logo-text">Jesus Done</span>
+              </Link>
             </div>
+            <nav>
+
+            </nav>
           </div>
-          <div
-            id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
-          >
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
-              </Link>
-            </div>
-            <div className="navbar-end has-text-centered">
-              <a
-                className="navbar-item"
-                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  <img src={github} alt="Github" />
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
-    )
-  }
+        </Constraint>
+      </Navbar>
+      <TopSpacer/>
+    </>
+  )
 }
 
 export default Navbar
