@@ -105,6 +105,9 @@ const Navbar = () => {
       >
         <Constraint>
           <div className="wrapper">
+            <div className="hamburger-menu-wrapper">
+
+            </div>
             <div className="logo-wrapper">
               <Link to="/" title="Logo" className="logo">
                 <span className="logo-text">What Has</span>
@@ -112,10 +115,10 @@ const Navbar = () => {
                 <span className="logo-text">Jesus Done</span>
               </Link>
             </div>
-            <nav>
-
-            </nav>
           </div>
+          <nav>
+
+          </nav>
         </Constraint>
       </Navbar>
       <TopSpacer/>
